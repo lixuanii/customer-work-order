@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+    max-keep-alive-requests: 100
+    keep-alive-timeout: 65
+  servlet:
+    context-path: /api
+spring:
+  profiles:
+    active: dev
+  application:
+    name: customerWorkOrder
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:mapper/*.xml
+
+upload:
+  rootPath: upload/
+
+
+globalDefaultProperties:
+  adviceFilter:
+    package: springfox.documentation
+    class: GlobalResult
+    passTokenUrls: swagger
